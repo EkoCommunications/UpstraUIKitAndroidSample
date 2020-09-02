@@ -1,4 +1,4 @@
-package com.example.upstrauikitandroidsample
+package com.ekoapp.upstrauikitandroidsample
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

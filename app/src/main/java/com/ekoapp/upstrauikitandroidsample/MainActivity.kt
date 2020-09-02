@@ -1,4 +1,4 @@
-package com.example.upstrauikitandroidsample
+package com.ekoapp.upstrauikitandroidsample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
