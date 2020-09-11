@@ -47,6 +47,10 @@ class MessageListActivity : AppCompatActivity(), EkoMessageListAdapter.ICustomVi
             MessageType.MESSAGE_ID_TEXT_SENDER -> TextSenderViewHolder(
                 inflater.inflate(R.layout.item_text_sender, parent, false), MyTextMsgViewModel()
             )
+            /**
+             * For types no customisation is  required pass null
+             * Default UIKIT Ui will be rendered for all those types
+             */
             else -> null
         }
     }
