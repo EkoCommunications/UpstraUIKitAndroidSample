@@ -18,7 +18,12 @@ class MainActivity : AppCompatActivity(), IRecentChatClickListener {
         EkoClient.registerDevice("testUser2", "Test User2").subscribe()
 
         val chatHomeFragment = EkoChatHomeFragment.Builder().build()
+        /**
+         * Implement listener to override item click
+         * No need to implement [IRecentChatClickListener] if you don't want to override item click
+         */
         chatHomeFragment.setRecentChatItemClickListener(this)
+
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragmentContainer, chatHomeFragment)
         transaction.addToBackStack(null)

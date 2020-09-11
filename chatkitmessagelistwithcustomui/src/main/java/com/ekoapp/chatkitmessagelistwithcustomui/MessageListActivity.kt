@@ -15,15 +15,27 @@ class MessageListActivity : AppCompatActivity(), EkoMessageListAdapter.ICustomVi
         setContentView(R.layout.activity_message_list)
 
         val channelId = intent.getStringExtra("CHANNEL_ID") ?: ""
+        /**
+         * Use Fragment builder to create instance
+         * @param [channelId] String pass the channelId
+         */
         val messageListFragment = EkoMessageListFragment.Builder(channelId)
             .build()
+        /**
+         * Implement [EkoMessageListAdapter.ICustomViewHolder] if customization is required for messageViews
+         * set the customView listener using [EkoMessageListFragment] instance
+         */
         messageListFragment.addCustomView(this)
+
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragmentContainer, messageListFragment)
         transaction.addToBackStack(null)
         transaction.commit()
     }
 
+    /**
+     * Use below overriden method to pass the custom  viewHolders based on viewType [MessageType]
+     */
     override fun getViewHolder(
         inflater: LayoutInflater,
         parent: ViewGroup,
