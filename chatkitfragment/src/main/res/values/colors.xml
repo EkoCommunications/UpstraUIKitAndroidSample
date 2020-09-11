@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <!--Customized below colors to change theme colors-->
+    <color name="ekoColorPrimary">#1054DE</color>
+    <color name="ekoColorSecondary">#292B32</color>
+    <color name="ekoColorAlert">#FA4D30</color>
+    <color name="ekoColorHighlight">#1054DE</color>
+    <color name="ekoColorBase">#292B32</color>
+    <color name="ekoColorBaseInverse">#FFFFFF</color>
+    <color name="messageBubble">#1054DE</color>
+    <color name="ekoMessageBubbleInverse">#EBECEF</color>
+</resources>

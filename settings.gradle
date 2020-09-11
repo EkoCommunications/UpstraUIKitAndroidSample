@@ -1,0 +1,7 @@
+include ':chatkitmessagelistwithcustomui'
+include ':chatkitmessagelistfragment'
+include ':chatkitmessagelistactivity'
+include ':chatkitfragment'
+include ':chatkitactivity'
+include ':app'
+rootProject.name = "UpstraUIKitAndroidSample"
