@@ -20,4 +20,22 @@
         android:layout_height="wrap_content"
         android:text="Open Custom Community"/>
 
+    <Button
+        android:id="@+id/btnCreateCommunity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create Community"/>
+
+    <Button
+        android:id="@+id/btnCommunityHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Community"/>
+
+    <Button
+        android:id="@+id/btnCreatePost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create Post"/>
+
 </LinearLayout>
