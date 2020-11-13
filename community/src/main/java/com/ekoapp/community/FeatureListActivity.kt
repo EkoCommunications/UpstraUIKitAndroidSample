@@ -3,6 +3,7 @@ package com.ekoapp.community
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.ekoapp.community.homepage.MyCustomCommunityHomePageActivity
 import com.ekoapp.ekosdk.uikit.community.home.activity.EkoCommunityHomePageActivity
 import kotlinx.android.synthetic.main.activity_feature_list.*
 
@@ -13,6 +14,11 @@ class FeatureListActivity : AppCompatActivity() {
 
         btnOpenDefaultCommunity.setOnClickListener{
             val intent = Intent(this, EkoCommunityHomePageActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnOpenCustomCommunity.setOnClickListener{
+            val intent = Intent(this, MyCustomCommunityHomePageActivity::class.java)
             startActivity(intent)
         }
     }
