@@ -3,13 +3,14 @@ package com.ekoapp.chatkitfragment
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.ekoapp.ekosdk.EkoChannel
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.ekoapp.ekosdk.EkoClient
-import com.ekoapp.ekosdk.uikit.chat.home.callback.IRecentChatClickListener
-import com.ekoapp.ekosdk.uikit.chat.home.fragment.EkoChatHomeFragment
+import com.ekoapp.ekosdk.uikit.chat.home.callback.IRecentChatItemClickListener
+import com.ekoapp.ekosdk.uikit.chat.home.fragment.EkoChatHomePageFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), IRecentChatClickListener {
+class MainActivity : AppCompatActivity(), IRecentChatItemClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,7 +18,7 @@ class MainActivity : AppCompatActivity(), IRecentChatClickListener {
         /**
          * Replace with actual userId[String] and displayName[String]
          */
-        EkoClient.registerDevice("testUser2", "Test User2").subscribe()
+        EkoClient.registerDevice("testUser2").displayName("Test User2").build().submit().subscribe()
 
         btnLoadFragment.setOnClickListener {
             initializeFragment()
@@ -30,12 +31,13 @@ class MainActivity : AppCompatActivity(), IRecentChatClickListener {
         /**
          * use Fragment builder to create Instance
          */
-        val chatHomeFragment = EkoChatHomeFragment.Builder().build()
-        /**
-         * set the listener to override recentItem click event
-         * No Need to implement [IRecentChatClickListener] if you don't want to override click event
-         */
-        chatHomeFragment.setRecentChatItemClickListener(this)
+        val chatHomeFragment = EkoChatHomePageFragment.Builder()
+            /**
+             * set the listener to override recentItem click event
+             * No Need to implement [IRecentChatItemClickListener] if you don't want to override click event
+             */
+            .recentChatItemClickListener(this)
+            .build(this)
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragmentContainer, chatHomeFragment)
         transaction.addToBackStack(null)
@@ -46,5 +48,6 @@ class MainActivity : AppCompatActivity(), IRecentChatClickListener {
         /**
          * Use click event for custom action
          */
+        Toast.makeText(this, "RecentChatItem Clicked", Toast.LENGTH_SHORT).show()
     }
 }

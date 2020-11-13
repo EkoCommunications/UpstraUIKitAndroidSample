@@ -8,7 +8,7 @@ class ChatkitMsgListActivityApp: Application() {
     /**
      * Replace with actual api key [String]
      */
-    val TEST_KEY = "b3baef0b6cdfa4361a348a1f5a011688d10889e4bc306d7d"
+    val TEST_KEY = "b3bab95b3edbf9661a368518045b4481d35cdfeaec35677d"
 
     override fun onCreate() {
         super.onCreate()
