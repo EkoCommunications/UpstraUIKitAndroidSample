@@ -3,8 +3,7 @@ package com.ekoapp.chatkitmessagelistwithcustomui
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.ekoapp.chatkitmessagelistwithcustomui.databinding.ItemTextSenderBinding
-import com.ekoapp.ekosdk.EkoMessage
-import com.ekoapp.ekosdk.messaging.data.EkoTextMessageData
+import com.ekoapp.ekosdk.message.EkoMessage
 import com.ekoapp.ekosdk.uikit.chat.messages.viewHolder.EkoChatMessageBaseViewHolder
 import com.ekoapp.ekosdk.uikit.chat.messages.viewModel.EkoChatMessageBaseViewModel
 
@@ -30,7 +29,8 @@ class TextSenderViewHolder(
      * @param [message] EkoMessage
      */
     override fun setMessage(message: EkoMessage) {
-        val text = message.getData(EkoTextMessageData::class.java).text
+        val data = message.getData() as EkoMessage.Data.TEXT
+        val text = data.getText()
         /**
          * Data binding can be used to set the views
          */
