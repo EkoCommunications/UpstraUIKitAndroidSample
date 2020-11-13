@@ -3,7 +3,7 @@ package com.ekoapp.chatkitmessagelistfragment
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.ekoapp.ekosdk.EkoChannel
+import androidx.fragment.app.Fragment
 import com.ekoapp.ekosdk.EkoClient
 import com.ekoapp.ekosdk.uikit.chat.messages.fragment.EkoMessageListFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         /**
          * Replace with actual userId[String] and displayName[String]
          */
-        EkoClient.registerDevice("testUser2", "Test User2").subscribe()
+        EkoClient.registerDevice("testUser2").displayName("Test User2").build().submit().subscribe()
 
         btnLoadFragment.setOnClickListener {
             loadFragment()
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
          * Replace channelId[String] with actual channelId
          */
         val builder = EkoMessageListFragment.Builder("channelId")
-        val messageListFragment = builder.build()
+        val messageListFragment: Fragment = builder.build()
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragmentContainer, messageListFragment)
         transaction.addToBackStack(null)

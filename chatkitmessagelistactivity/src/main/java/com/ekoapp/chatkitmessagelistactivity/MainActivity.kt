@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         /**
          * Replace with actual userId[String] and displayName[String]
          */
-        EkoClient.registerDevice("testUser2", "Test User2").subscribe()
+        EkoClient.registerDevice("testUser2").displayName("Test User2").build().submit().subscribe()
         loadMessageList()
     }
 
@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         btnMessageList.setOnClickListener {
             /**
              * Use [EkoMessageListActivity.newIntent] to create EkoMessageList intent
-             * Replace channelId[String] with actual values
+             * Replace channelId[String] with actual value
              */
             val messageIntent = EkoMessageListActivity.newIntent(this, "channelId")
             startActivity(messageIntent)

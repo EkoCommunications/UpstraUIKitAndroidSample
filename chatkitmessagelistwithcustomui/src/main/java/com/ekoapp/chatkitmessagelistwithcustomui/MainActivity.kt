@@ -4,10 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.ekoapp.ekosdk.EkoClient
-import com.ekoapp.ekosdk.uikit.chat.home.callback.IRecentChatClickListener
-import com.ekoapp.ekosdk.uikit.chat.home.fragment.EkoChatHomeFragment
+import com.ekoapp.ekosdk.uikit.chat.home.callback.IRecentChatItemClickListener
+import com.ekoapp.ekosdk.uikit.chat.home.fragment.EkoChatHomePageFragment
 
-class MainActivity : AppCompatActivity(), IRecentChatClickListener {
+class MainActivity : AppCompatActivity(), IRecentChatItemClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,14 +15,15 @@ class MainActivity : AppCompatActivity(), IRecentChatClickListener {
         /**
          * Replace with actual userId[String] and displayName[String]
          */
-        EkoClient.registerDevice("testUser2", "Test User2").subscribe()
+        EkoClient.registerDevice("testUser2").displayName("Test User2").build().submit().subscribe()
 
-        val chatHomeFragment = EkoChatHomeFragment.Builder().build()
-        /**
-         * Implement listener to override item click
-         * No need to implement [IRecentChatClickListener] if you don't want to override item click
-         */
-        chatHomeFragment.setRecentChatItemClickListener(this)
+        val chatHomeFragment = EkoChatHomePageFragment.Builder()
+            /**
+             * Implement listener to override item click
+             * No need to implement [IRecentChatClickListener] if you don't want to override item click
+             */
+            .recentChatItemClickListener(this)
+            .build(this)
 
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragmentContainer, chatHomeFragment)
