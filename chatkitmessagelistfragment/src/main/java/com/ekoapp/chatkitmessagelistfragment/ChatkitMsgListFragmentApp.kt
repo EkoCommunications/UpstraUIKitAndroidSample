@@ -8,7 +8,7 @@ class ChatkitMsgListFragmentApp: Application() {
     /**
      * Replace with actual api key [String]
      */
-    val TEST_KEY = "b3bab95b3edbf9661a368518045b4481d35cdfeaec35677d"
+    val TEST_KEY = "b3babb5e32dbf2314935d81e0301438fd85b84b7b2316a2e"
 
     override fun onCreate() {
         super.onCreate()
