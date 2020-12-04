@@ -62,7 +62,7 @@ class NewsFeedHomeActivity : AppCompatActivity() {
     }
 
     private fun getTimeline(): Fragment {
-        return EkoFeedFragment.Builder().mine().build()
+        return EkoFeedFragment.Builder().mine().build(this)
     }
 
     private fun addFragment(fragment: Fragment) {

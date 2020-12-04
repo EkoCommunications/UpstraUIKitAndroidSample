@@ -2,7 +2,7 @@
 buildscript {
     ext {
         kotlin_version = "1.4.0"
-        uikit_version = "1.4.0-beta07"
+        uikit_version = "1.6.0"
     }
     repositories {
         google()
