@@ -22,7 +22,7 @@ class CreatePostActivity : AppCompatActivity() {
 
     private fun getCommunityHomeFragment(): Fragment {
         return EkoPostCreateFragment.Builder()
-            .build()
+            .build(this)
     }
 
 }

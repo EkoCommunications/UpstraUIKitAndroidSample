@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.ekoapp.community.R
+import com.ekoapp.ekosdk.uikit.community.explore.fragments.EkoExploreFragment
 import com.ekoapp.ekosdk.uikit.community.home.fragments.EkoCommunityHomePageFragment
 import com.ekoapp.ekosdk.uikit.community.home.listener.IExploreFragmentFragmentDelegate
 
@@ -27,7 +28,9 @@ class MyCustomCommunityHomePageActivity : AppCompatActivity(), IExploreFragmentF
             .build(this)
     }
 
-    override fun getExploreFragment(): Fragment {
-        return MyCustomExploreFragment.newInstance()
+    override fun getExploreFragment(): EkoExploreFragment {
+        return EkoExploreFragment.Builder()
+            .build(this)
     }
+
 }
