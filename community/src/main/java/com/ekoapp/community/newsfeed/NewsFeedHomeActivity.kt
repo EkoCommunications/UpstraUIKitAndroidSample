@@ -22,6 +22,9 @@ class NewsFeedHomeActivity : AppCompatActivity() {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         val fragment = getNewsFeed()
         addFragment(fragment)
+
+        val appLinkUri = intent.extras?.get("uri")
+        //TODO plus appLinkUri with postId from shareable External
     }
 
     private val mOnNavigationItemSelectedListener =
