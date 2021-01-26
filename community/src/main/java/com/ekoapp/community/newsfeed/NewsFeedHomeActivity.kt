@@ -5,6 +5,7 @@ import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.ekoapp.community.R
+import com.ekoapp.community.utils.shareLinkToExternalApp
 import com.ekoapp.ekosdk.EkoClient
 import com.ekoapp.ekosdk.uikit.community.explore.fragments.EkoExploreFragment
 import com.ekoapp.ekosdk.uikit.community.newsfeed.fragment.EkoFeedFragment
@@ -12,6 +13,7 @@ import com.ekoapp.ekosdk.uikit.community.newsfeed.fragment.EkoNewsFeedFragment
 import com.ekoapp.ekosdk.uikit.community.profile.fragment.EkoUserProfilePageFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_news_feed_home.*
+import java.util.*
 
 class NewsFeedHomeActivity : AppCompatActivity() {
     private var content: FrameLayout? = null
@@ -23,8 +25,11 @@ class NewsFeedHomeActivity : AppCompatActivity() {
         val fragment = getNewsFeed()
         addFragment(fragment)
 
+        //TODO Prepare handle with UIKit callback
         val appLinkUri = intent.extras?.get("uri")
-        //TODO plus appLinkUri with postId from shareable External
+        val mockPostId = UUID.randomUUID()
+        val sharePostURL = "${appLinkUri.toString()}id?=${mockPostId}"
+        shareLinkToExternalApp(sharePostURL)
     }
 
     private val mOnNavigationItemSelectedListener =
