@@ -28,7 +28,7 @@
 
                 <data
                     android:host="upstra"
-                    android:pathPrefix="/post"
+                    android:pathPrefix="/postDetail"
                     android:scheme="app" />
             </intent-filter>
         </activity>

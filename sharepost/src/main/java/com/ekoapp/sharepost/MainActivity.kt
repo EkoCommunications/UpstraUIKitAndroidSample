@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun navigateToFeatureList() {
-        val deepUrl = "app://upstra/post"
+        val deepUrl = "app://upstra/postDetail"
         val intent = Intent(Intent.ACTION_VIEW)
         intent.data = Uri.parse(deepUrl)
         startActivity(intent)
