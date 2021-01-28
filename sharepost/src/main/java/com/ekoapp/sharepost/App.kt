@@ -1,8 +1,12 @@
 package com.ekoapp.sharepost
 
 import android.app.Application
+import android.content.Context
 import android.util.Log
 import com.ekoapp.ekosdk.EkoClient
+import com.ekoapp.ekosdk.feed.EkoPost
+import com.ekoapp.ekosdk.uikit.community.newsfeed.listener.ISharePostClickListener
+import com.ekoapp.ekosdk.uikit.community.views.EkoUIKitClient
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -18,6 +22,13 @@ class App : Application() {
             }
             .doOnError {
             it.message?.let { it1 -> Log.d("", it1) }
+        }
+
+        EkoUIKitClient.feedUISettings.feedEventHandler = object : ISharePostClickListener{
+            override fun shareToExternal(context: Context, post: EkoPost) {
+                context.shareLinkToExternalApp(post.getPostId())
+            }
+
         }
     }
 }
