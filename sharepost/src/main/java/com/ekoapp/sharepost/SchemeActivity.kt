@@ -1,18 +1,19 @@
-package com.ekoapp.community.newsfeed
+package com.ekoapp.sharepost
 
-import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.ekoapp.ekosdk.uikit.community.home.activity.EkoCommunityHomePageActivity
 
-class SchemeActivity : Activity() {
+class SchemeActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        handleDeepLink {
-            val intent = Intent(this, NewsFeedHomeActivity::class.java)
-            intent.putExtra("uri", it)
-            startActivity(intent)
-        }
+
+        val intent = Intent(this, EkoCommunityHomePageActivity::class.java)
+        startActivity(intent)
+
         finish()
     }
 

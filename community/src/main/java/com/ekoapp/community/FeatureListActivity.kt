@@ -1,11 +1,11 @@
 package com.ekoapp.community
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.ekoapp.community.homepage.MyCustomCommunityHomePageActivity
 import com.ekoapp.community.newsfeed.CreatePostActivity
+import com.ekoapp.community.newsfeed.NewsFeedHomeActivity
 import com.ekoapp.ekosdk.uikit.community.home.activity.EkoCommunityHomePageActivity
 import com.ekoapp.ekosdk.uikit.community.ui.view.EkoCommunityCreateActivity
 import kotlinx.android.synthetic.main.activity_feature_list.*
@@ -31,9 +31,7 @@ class FeatureListActivity : AppCompatActivity() {
         }
 
         btnCommunityHome.setOnClickListener {
-            val deepUrl = "app://upstra/post"
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.data = Uri.parse(deepUrl)
+            val intent = Intent(this, NewsFeedHomeActivity::class.java)
             startActivity(intent)
         }
 
