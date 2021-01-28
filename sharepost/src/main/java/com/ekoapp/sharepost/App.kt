@@ -21,12 +21,13 @@ class App : Application() {
                 Log.d("", "setup success")
             }
             .doOnError {
-            it.message?.let { it1 -> Log.d("", it1) }
-        }
+                it.message?.let { it1 -> Log.d("", it1) }
+            }
 
-        EkoUIKitClient.feedUISettings.feedEventHandler = object : ISharePostClickListener{
+        EkoUIKitClient.feedUISettings.feedEventHandler = object : ISharePostClickListener {
             override fun shareToExternal(context: Context, post: EkoPost) {
-                context.shareLinkToExternalApp(post.getPostId())
+                val fakeURL = "https://www.upstra.co/postDetail?id=" + post.getPostId()
+                context.shareLinkToExternalApp(fakeURL)
             }
 
         }
