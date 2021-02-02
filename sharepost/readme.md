@@ -9,7 +9,7 @@ In your app/build.gradle file add a dependency on one of the UIKit libraries.
 
 ```groovy
 dependencies {
-   implementation 'com.github.EkoCommunications.UpstraUIKitAndroid:upstra-uikit:1.8.3-beta06'
+   implementation 'com.github.EkoCommunications.UpstraUIKitAndroid:upstra-uikit:1.9.0'
 }
 ```
 
@@ -61,6 +61,40 @@ var userFeedPostSharingTarget = listOf(EkoPostSharingTarget.OriginFeed, EkoPostS
 ```
 
 ### 2. Share Out
+
+From `ISharePostClickListener` class you can override `shareToExternal(context: Context, post: EkoPost)` function for handle share with "More options" menu
+by calling the following this:
+
+If you want to set a `Network Level` setting:
+
+##### Example:
+```Kotlin
+EkoUIKitClient.feedUISettings.feedEventHandler = object : ISharePostClickListener {
+   override fun shareToExternal(context: Context, post: EkoPost) {
+       //You can implement deeplink and jump to intent share external app from your side
+   }
+}
+```
+
+If you want to set a `Component Level` setting:
+
+In your Activity need to extend `ISharePostClickListener` class and override `shareToExternal(context: Context, post: EkoPost)` function 
+
+##### Example:
+```Kotlin
+class YourActivity : AppCompatActivity(), ISharePostClickListener {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_feature_list)
+    }
+
+    override fun shareToExternal(context: Context, post: EkoPost) {
+        super.shareToExternal(context, post)
+        //You can implement deeplink and jump to intent share external app from your side
+    }
+}
+```
    
 
 ### 3. Share In       
