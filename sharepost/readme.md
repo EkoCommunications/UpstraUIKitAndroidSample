@@ -95,6 +95,8 @@ class YourActivity : AppCompatActivity(), ISharePostClickListener {
     }
 }
 ```
+
+Note: *If you not override shareToExternal(context: Context, post: EkoPost) function. The UIKit will do nothing with UI except return context and post object
    
 
 ### 3. Share In       
