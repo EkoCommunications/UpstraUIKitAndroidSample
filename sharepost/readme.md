@@ -15,7 +15,7 @@ dependencies {
 
 ## Usage
 
-### Sharing Setting
+### 1. Sharing Setting
 If you want to be able to set a network level setting to enable share settings
 
 So that you can decide whether you want to enable where to share from (timeline / private community / public community) and where to share to (my timeline / my public community / my private community / external)
@@ -60,10 +60,10 @@ var myFeedPostSharingTarget = listOf(EkoPostSharingTarget.OriginFeed, EkoPostSha
 var userFeedPostSharingTarget = listOf(EkoPostSharingTarget.OriginFeed, EkoPostSharingTarget.MyFeed, EkoPostSharingTarget.PublicCommunity, EkoPostSharingTarget.PrivateCommunity)
 ```
 
-### Share Out
+### 2. Share Out
    
 
-### Share In       
+### 3. Share In       
 If you want to be able to navigate to post detail page by using post id as the key
 
 So that you can implement deeplink from your side and jump to a specific page detail page by calling the following this:
