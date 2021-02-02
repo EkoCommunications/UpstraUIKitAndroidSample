@@ -20,6 +20,10 @@ If you want to be able to set a network level setting to enable share settings
 
 So that you can decide whether you want to enable where to share from (timeline / private community / public community) and where to share to (my timeline / my public community / my private community / external)
 
+#### Enum
+#### EkoPostSharingTarget
+`OriginFeed, MyFeed, PublicCommunity, PrivateCommunity, External`
+
 #### 1. EkoPostSharingSetting
 If you want to be able to set your feed post sharing target by calling the following this:
 
