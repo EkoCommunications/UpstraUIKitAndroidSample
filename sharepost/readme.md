@@ -14,6 +14,41 @@ dependencies {
 ```
 
 ## Usage
+
+### Sharing Setting
+If you want to be able to set a network level setting to enable share settings
+
+So that you can decide whether you want to enable where to share from (timeline / private community / public community) and where to share to (my timeline / my public community / my private community / external)
+
+#### 1. EkoPostSharingSetting
+If you want to be able to set your feed post sharing target by calling the following this:
+
+#### My Feed
+`settings.myFeedPostSharingTarget`
+
+##### Example:
+```Kotlin
+   val settings = EkoPostSharingSettings()
+   settings.myFeedPostSharingTarget = listOf(EkoPostSharingTarget.MyFeed, EkoPostSharingTarget.External)
+   EkoUIKitClient.feedUISettings.setPostSharingSettings(settings)
+```
+
+as same as if you want to setting private community, public community or other user feed by assign value setting following this:
+
+#### Private Community
+`settings.privateCommunityPostSharingTarget`
+
+#### Public Community
+`settings.publicCommunityPostSharingTarget`
+
+#### Other User feed
+`settings.userFeedPostSharingTarget`
+
+
+Note: The settings sharing target expected type `List<EkoPostSharingTarget>`
+
+
+
 ### Share Out
    
 
