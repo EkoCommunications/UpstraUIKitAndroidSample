@@ -9,6 +9,25 @@ In your app/build.gradle file add a dependency on one of the UIKit libraries.
 
 ```groovy
 dependencies {
-   implementation 'com.github.EkoCommunications.UpstraUIKitAndroid:1.8.3-beta06'
+   implementation 'com.github.EkoCommunications.UpstraUIKitAndroid:upstra-uikit:1.8.3-beta06'
 }
 ```
+
+## Usage
+### Share Out
+   
+
+### Share In       
+If you want to be able to navigate to post detail page by using post id as the key
+
+So that you can implement deeplink from your side and jump to a specific page detail page by calling the following this:
+
+
+```Kotlin
+   val intent = Intent(this, EkoPostDetailsActivity::class.java)
+   intent.putExtra(EXTRA_PARAM_NEWS_FEED_ID, :postId)
+   startActivity(intent)
+```
+            
+
+
