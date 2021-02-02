@@ -12,6 +12,7 @@ import com.ekoapp.ekosdk.uikit.community.newsfeed.fragment.EkoNewsFeedFragment
 import com.ekoapp.ekosdk.uikit.community.profile.fragment.EkoUserProfilePageFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_news_feed_home.*
+import java.util.*
 
 class NewsFeedHomeActivity : AppCompatActivity() {
     private var content: FrameLayout? = null
