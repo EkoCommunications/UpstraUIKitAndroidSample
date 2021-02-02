@@ -90,15 +90,12 @@ In your Activity or Fragment need to extend `ISharePostClickListener` class and 
 ```Kotlin
 class YourFragment : Fragment(), ISharePostClickListener {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_feature_list)
-        
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val fragment = EkoCommunityFeedFragment.Builder()
-            .community(community)
+            .community(:community)
             .postShareClickListener(this)
             .build(activity as AppCompatActivity)
-            
         //Do replace fragment
     }
 
