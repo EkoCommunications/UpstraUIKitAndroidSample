@@ -23,6 +23,8 @@ So that you can decide whether you want to enable where to share from (timeline 
 #### 1. EkoPostSharingSetting
 If you want to be able to set your feed post sharing target by calling the following this:
 
+The settings sharing target expected type `List<EkoPostSharingTarget>`
+
 #### My Feed
 `settings.myFeedPostSharingTarget`
 
@@ -33,7 +35,7 @@ If you want to be able to set your feed post sharing target by calling the follo
    EkoUIKitClient.feedUISettings.setPostSharingSettings(settings)
 ```
 
-as same as if you want to setting private community, public community or other user feed by assign value setting following this:
+as well as if you want to setting private community, public community or other user feed by assign value setting following this:
 
 #### Private Community
 `settings.privateCommunityPostSharingTarget`
@@ -45,9 +47,14 @@ as same as if you want to setting private community, public community or other u
 `settings.userFeedPostSharingTarget`
 
 
-Note: The settings sharing target expected type `List<EkoPostSharingTarget>`
+Note: If you won't calling setting the UIKit will use default value as follows:
 
-
+```Kotlin
+var privateCommunityPostSharingTarget = listOf(EkoPostSharingTarget.OriginFeed)
+var publicCommunityPostSharingTarget = listOf(EkoPostSharingTarget.OriginFeed, EkoPostSharingTarget.MyFeed, EkoPostSharingTarget.PublicCommunity, EkoPostSharingTarget.PrivateCommunity)
+var myFeedPostSharingTarget = listOf(EkoPostSharingTarget.OriginFeed, EkoPostSharingTarget.MyFeed, EkoPostSharingTarget.PublicCommunity, EkoPostSharingTarget.PrivateCommunity)
+var userFeedPostSharingTarget = listOf(EkoPostSharingTarget.OriginFeed, EkoPostSharingTarget.MyFeed, EkoPostSharingTarget.PublicCommunity, EkoPostSharingTarget.PrivateCommunity)
+```
 
 ### Share Out
    
