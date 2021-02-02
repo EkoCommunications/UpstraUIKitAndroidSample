@@ -96,8 +96,7 @@ class YourActivity : AppCompatActivity(), ISharePostClickListener {
 }
 ```
 
-Note: *If you not override shareToExternal(context: Context, post: EkoPost) function. The UIKit will do nothing with UI except return context and post object
-   
+Note: *If you not override shareToExternal(context: Context, post: EkoPost) function. The UIKit will don't anything with UI except return context and post object
 
 ### 3. Share In       
 If you want to be able to navigate to post detail page by using post id as the key
