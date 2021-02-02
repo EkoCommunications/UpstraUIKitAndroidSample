@@ -114,10 +114,11 @@ If you want to be able to navigate to post detail page by using post id as the k
 So that you can implement deeplink from your side and jump to a specific page detail page by calling the following this:
 
 ##### Example:
+
 ```Kotlin
-   val intent = Intent(this, EkoPostDetailsActivity::class.java)
-   intent.putExtra(EXTRA_PARAM_NEWS_FEED_ID, :postId)
-   startActivity(intent)
+   val fragment = EkoPostDetailFragment.Builder()
+            .postId(:postId)
+            .build(activity as AppCompatActivity)
 ```
             
 
