@@ -1,8 +1,8 @@
 package com.ekoapp.community
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.ekoapp.community.homepage.MyCustomCommunityHomePageActivity
 import com.ekoapp.community.newsfeed.CreatePostActivity
 import com.ekoapp.community.newsfeed.NewsFeedHomeActivity
@@ -15,22 +15,22 @@ class FeatureListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_feature_list)
 
-        btnOpenDefaultCommunity.setOnClickListener{
+        btnOpenDefaultCommunity.setOnClickListener {
             val intent = Intent(this, EkoCommunityHomePageActivity::class.java)
             startActivity(intent)
         }
 
-        btnOpenCustomCommunity.setOnClickListener{
+        btnOpenCustomCommunity.setOnClickListener {
             val intent = Intent(this, MyCustomCommunityHomePageActivity::class.java)
             startActivity(intent)
         }
 
-        btnCreateCommunity.setOnClickListener{
+        btnCreateCommunity.setOnClickListener {
             val intent = Intent(this, EkoCommunityCreateActivity::class.java)
             startActivity(intent)
         }
 
-        btnCommunityHome.setOnClickListener{
+        btnCommunityHome.setOnClickListener {
             val intent = Intent(this, NewsFeedHomeActivity::class.java)
             startActivity(intent)
         }
