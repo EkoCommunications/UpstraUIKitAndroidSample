@@ -51,7 +51,7 @@ as well as if you want to setting private community, public community or other u
 `settings.userFeedPostSharingTarget`
 
 
-Note: If you won't calling setting the UIKit will use default value as follows:
+Note: If you won't calling setting. The UIKit will use default value as follows:
 
 ```Kotlin
 var privateCommunityPostSharingTarget = listOf(EkoPostSharingTarget.OriginFeed)
