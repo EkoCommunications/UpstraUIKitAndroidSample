@@ -77,6 +77,13 @@ EkoUIKitClient.feedUISettings.feedEventHandler = object : ISharePostClickListene
 
 If you want to set a `Component Level` setting:
 
+Class able that you can call `.postShareClickListener(this)` in Builder as follows:
+   1. EkoMyFeedFragment class
+   2. EkoCommunityFeedFragment class
+   3. EkoGlobalFeedFragment class
+   4. EkoPostDetailFragment class
+   5. EkoUserFeedFragment class
+
 In your Activity or Fragment need to extend `ISharePostClickListener` class and override `shareToExternal(context: Context, post: EkoPost)` function 
 
 ##### Example:
