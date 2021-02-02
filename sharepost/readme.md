@@ -67,7 +67,6 @@ by calling the following this:
 
 If you want to set a `Network Level` setting:
 
-c
 ```Kotlin
 EkoUIKitClient.feedUISettings.feedEventHandler = object : ISharePostClickListener {
    override fun shareToExternal(context: Context, post: EkoPost) {
@@ -78,15 +77,22 @@ EkoUIKitClient.feedUISettings.feedEventHandler = object : ISharePostClickListene
 
 If you want to set a `Component Level` setting:
 
-In your Activity need to extend `ISharePostClickListener` class and override `shareToExternal(context: Context, post: EkoPost)` function 
+In your Activity or Fragment need to extend `ISharePostClickListener` class and override `shareToExternal(context: Context, post: EkoPost)` function 
 
 ##### Example:
 ```Kotlin
-class YourActivity : AppCompatActivity(), ISharePostClickListener {
+class YourFragment : Fragment(), ISharePostClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_feature_list)
+        
+        val fragment = EkoCommunityFeedFragment.Builder()
+            .community(community)
+            .postShareClickListener(this)
+            .build(activity as AppCompatActivity)
+            
+        //Do replace fragment
     }
 
     override fun shareToExternal(context: Context, post: EkoPost) {
