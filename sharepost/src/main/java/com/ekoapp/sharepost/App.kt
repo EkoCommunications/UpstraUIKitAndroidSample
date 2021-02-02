@@ -8,7 +8,7 @@ import com.ekoapp.ekosdk.feed.EkoPost
 import com.ekoapp.ekosdk.uikit.settings.EkoUIKitClient
 import com.ekoapp.ekosdk.uikit.settings.feed.EkoPostSharingSettings
 import com.ekoapp.ekosdk.uikit.settings.feed.EkoPostSharingTarget
-import com.ekoapp.ekosdk.uikit.settings.feed.ISharePostClickListener
+import com.ekoapp.ekosdk.uikit.settings.feed.IPostShareClickListener
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -29,14 +29,13 @@ class App : Application() {
         //TODO This allow setting share external for example
         val settings = EkoPostSharingSettings()
         settings.myFeedPostSharingTarget = enumValues<EkoPostSharingTarget>().toList()
-        EkoUIKitClient.feedUISettings.setPostSharingSettings(settings)
+        EkoUIKitClient.feedUISettings.postSharingSettings = settings
 
-        EkoUIKitClient.feedUISettings.feedEventHandler = object : ISharePostClickListener {
+        EkoUIKitClient.feedUISettings.postShareClickListener = object : IPostShareClickListener {
             override fun shareToExternal(context: Context, post: EkoPost) {
                 val fakeURL = "https://www.upstra.co/postDetail?id=" + post.getPostId()
                 context.shareLinkToExternalApp(fakeURL)
             }
-
         }
     }
 }
