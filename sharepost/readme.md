@@ -24,7 +24,7 @@ So that you can decide whether you want to enable where to share from (timeline 
 #### EkoPostSharingTarget
 `OriginFeed, MyFeed, PublicCommunity, PrivateCommunity, External`
 
-#### 1. EkoPostSharingSetting
+#### 1.1 EkoPostSharingSetting
 If you want to be able to set your feed post sharing target by calling the following this:
 
 The settings sharing target expected type `List<EkoPostSharingTarget>`
