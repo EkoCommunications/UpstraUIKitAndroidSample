@@ -36,7 +36,7 @@ The settings sharing target expected type `List<EkoPostSharingTarget>`
 ```Kotlin
    val settings = EkoPostSharingSettings()
    settings.myFeedPostSharingTarget = listOf(EkoPostSharingTarget.MyFeed, EkoPostSharingTarget.External)
-   EkoUIKitClient.feedUISettings.setPostSharingSettings(settings)
+   EkoUIKitClient.feedUISettings.postSharingSettings = settings
 ```
 
 as well as if you want to setting private community, public community or other user feed by assign value setting following this:
@@ -62,13 +62,13 @@ var userFeedPostSharingTarget = listOf(EkoPostSharingTarget.OriginFeed, EkoPostS
 
 ### 2. Share Out
 
-From `ISharePostClickListener` class you can override `shareToExternal(context: Context, post: EkoPost)` function for handle share with "More options" menu
+From `IPostShareClickListener` class you can override `shareToExternal(context: Context, post: EkoPost)` function for handle share with "More options" menu
 by calling the following this:
 
 If you want to set a `Network Level` setting:
 
 ```Kotlin
-EkoUIKitClient.feedUISettings.feedEventHandler = object : ISharePostClickListener {
+EkoUIKitClient.feedUISettings.postShareClickListener = object : IPostShareClickListener {
    override fun shareToExternal(context: Context, post: EkoPost) {
        //You can implement deeplink and jump to intent share external app from your side
    }
@@ -84,11 +84,11 @@ Class able that you can call `.postShareClickListener(this)` in Builder as follo
    4. `EkoPostDetailFragment` class
    5. `EkoUserFeedFragment` class
 
-In your Activity or Fragment need to extend `ISharePostClickListener` class and override `shareToExternal(context: Context, post: EkoPost)` function 
+In your Activity or Fragment need to extend `IPostShareClickListener` class and override `shareToExternal(context: Context, post: EkoPost)` function 
 
 ##### Example:
 ```Kotlin
-class YourFragment : Fragment(), ISharePostClickListener {
+class YourFragment : Fragment(), IPostShareClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
