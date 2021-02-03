@@ -36,7 +36,7 @@ The settings sharing target expected type `List<EkoPostSharingTarget>`
 ```Kotlin
    val settings = EkoPostSharingSettings()
    settings.myFeedPostSharingTarget = listOf(EkoPostSharingTarget.MyFeed, EkoPostSharingTarget.External)
-   EkoUIKitClient.feedUISettings.setPostSharingSettings(settings)
+   EkoUIKitClient.feedUISettings.postSharingSettings = settings
 ```
 
 as well as if you want to setting private community, public community or other user feed by assign value setting following this:
