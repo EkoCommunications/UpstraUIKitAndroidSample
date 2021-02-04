@@ -3,52 +3,41 @@
 In order to boost user engagement, to allow users to share / repost a post is an organic next step when
 users find a post is worthy of being noticed, either to appeal for different voices or to express the concur to the notion.
 
-## Installation
-
-In your app/build.gradle file add a dependency on one of the UIKit libraries.
-
-```groovy
-dependencies {
-   implementation 'com.github.EkoCommunications.UpstraUIKitAndroid:upstra-uikit:1.9.0'
-}
-```
-
-## Usage
 
 ### 1. Sharing Setting
-If you want to be able to set a network level setting to enable share settings
-
-So that you can decide whether you want to enable where to share from (timeline / private community / public community) and where to share to (my timeline / my public community / my private community / external)
+You can decide where a post from each origin (my timeline / private community / public community) can be shared to. 
 
 ### Enum
 #### EkoPostSharingTarget
 `OriginFeed, MyFeed, PublicCommunity, PrivateCommunity, External`
 
-#### 1.1 EkoPostSharingSetting
-If you want to be able to set your feed post sharing target by calling the following this:
+Use enums to enable the target(s) that a post can be shared to.
 
-The settings sharing target expected type `List<EkoPostSharingTarget>`
+
+#### EkoPostSharingSetting
 
 #### My Feed
-`settings.myFeedPostSharingTarget`
+Use `settings.myFeedPostSharingTarget`, to define sharing destinations for posts that were created on my feed.
+Note: EkoPostSharingTarget.Origin will be ignored for this settings
+
+#### Private Community
+Use `settings.privateCommunityPostSharingTarget`, to define sharing destinations for posts that were created on private community
+
+#### Public Community
+Use `settings.publicCommunityPostSharingTarget`, to define sharing destinations for posts that were created on public community
+
+
+#### Other User feed
+Use `settings.userFeedPostSharingTarget`, to define sharing destinations for posts that were created on other users' feed
+
 
 ##### Example:
 ```Kotlin
+   // Define that posts created ony my feed can be shared within my feed and to external destinations only.
    val settings = EkoPostSharingSettings()
    settings.myFeedPostSharingTarget = listOf(EkoPostSharingTarget.MyFeed, EkoPostSharingTarget.External)
-   EkoUIKitClient.feedUISettings.setPostSharingSettings(settings)
+   EkoUIKitClient.feedUISettings.postSharingSettings = settings
 ```
-
-as well as if you want to setting private community, public community or other user feed by assign value setting following this:
-
-#### Private Community
-`settings.privateCommunityPostSharingTarget`
-
-#### Public Community
-`settings.publicCommunityPostSharingTarget`
-
-#### Other User feed
-`settings.userFeedPostSharingTarget`
 
 
 Note: If you won't calling setting. The UIKit will use default value as follows:
@@ -61,64 +50,58 @@ var userFeedPostSharingTarget = listOf(EkoPostSharingTarget.OriginFeed, EkoPostS
 ```
 
 ### 2. Share Out
+You can implement Share out feature by adding EkoPostSharingTarget.External to the corresponding EkoPostSharingSetting that you'd like to enable "More option" menu. With `IPostShareClickListener` interface you can implement `shareToExternal(context: Context, post: EkoPost)` function to handle on "More options" menu clicked event.
 
-From `ISharePostClickListener` class you can override `shareToExternal(context: Context, post: EkoPost)` function for handle share with "More options" menu
-by calling the following this:
-
-If you want to set a `Network Level` setting:
+If you want to apply the implementation to `Global Level` setting:
 
 ```Kotlin
-EkoUIKitClient.feedUISettings.feedEventHandler = object : ISharePostClickListener {
+// In your Application class
+
+EkoUIKitClient.feedUISettings.postShareClickListener = object : IPostShareClickListener {
    override fun shareToExternal(context: Context, post: EkoPost) {
-       //You can implement deeplink and jump to intent share external app from your side
+       //You can generate deeplink from postId and launch share intent
    }
 }
 ```
 
-If you want to set a `Component Level` setting:
+If you want to apply the implementation to `Component Level` setting, you have to provide the implementation at `.postShareClickListener(this)` function via the component Builder.
 
-Class able that you can call `.postShareClickListener(this)` in Builder as follows:
-   1. `EkoMyFeedFragment` class
-   2. `EkoCommunityFeedFragment` class
-   3. `EkoGlobalFeedFragment` class
-   4. `EkoPostDetailFragment` class
-   5. `EkoUserFeedFragment` class
+Components that take IPostShareClickListener:
+   1. `EkoMyFeedFragment`
+   2. `EkoCommunityFeedFragment` 
+   3. `EkoGlobalFeedFragment` 
+   4. `EkoPostDetailFragment` 
+   5. `EkoUserFeedFragment` 
 
-In your Activity or Fragment need to extend `ISharePostClickListener` class and override `shareToExternal(context: Context, post: EkoPost)` function 
 
 ##### Example:
 ```Kotlin
-class YourFragment : Fragment(), ISharePostClickListener {
+class YourFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val fragment = EkoCommunityFeedFragment.Builder()
             .community(:community)
-            .postShareClickListener(this)
+            .postShareClickListener(object : IPostShareClickListener {
+                override fun shareToExternal(context: Context, post: EkoPost) {
+                  //You can generate deeplink from postId and launch share intent
+               }
+            })
             .build(activity as AppCompatActivity)
-        //Do replace fragment
     }
-
-    override fun shareToExternal(context: Context, post: EkoPost) {
-        super.shareToExternal(context, post)
-        //You can implement deeplink and jump to intent share external app from your side
-    }
+    
 }
 ```
 
-Note: *If you not override shareToExternal(context: Context, post: EkoPost) function. The UIKit will don't anything with UI except return context and post object
-
 ### 3. Share In       
-If you want to be able to navigate to post detail page by using post id as the key
-
-So that you can implement deeplink from your side and jump to a specific page detail page by calling the following this:
+You can parse postId from your deeplink, and use it to navigate to Post detail page.
 
 ##### Example:
 
 ```Kotlin
    val fragment = EkoPostDetailFragment.Builder()
             .postId(:postId)
-            .build(activity as AppCompatActivity)
+            .build(activity)
 ```
             
 
