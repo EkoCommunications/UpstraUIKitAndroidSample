@@ -61,7 +61,7 @@ class FeatureListActivity : AppCompatActivity() {
 
             val pendingIntent = sBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT)
             val intentSender = pendingIntent?.intentSender
-            startIntentSender(intentSender, postDetailIntent, 0, 0, 0)
+            startIntentSender(intentSender, null, 0, 0, 0)
         }
     }
 
