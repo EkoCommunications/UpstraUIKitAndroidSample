@@ -1,17 +1,17 @@
 package com.ekoapp.sharepost
 
 import android.annotation.SuppressLint
-import android.app.PendingIntent
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.TaskStackBuilder
 import com.ekoapp.ekosdk.uikit.community.home.activity.EkoCommunityHomePageActivity
 import com.ekoapp.ekosdk.uikit.community.newsfeed.activity.EkoPostDetailsActivity
 import com.ekoapp.ekosdk.uikit.community.utils.EXTRA_PARAM_COMMUNITY_ID
 import com.ekoapp.ekosdk.uikit.community.utils.EXTRA_PARAM_NEWS_FEED_ID
 import kotlinx.android.synthetic.main.activity_feature_list.*
+import java.util.*
+import kotlin.concurrent.schedule
 
 class FeatureListActivity : AppCompatActivity() {
 
@@ -51,17 +51,11 @@ class FeatureListActivity : AppCompatActivity() {
             val communityHomeIntent = Intent(this, CommunityHomePageActivity::class.java)
             val communityIntent = Intent(this, CommunityActivity::class.java)
             communityIntent.putExtra(EXTRA_PARAM_COMMUNITY_ID, fakeCommunityId)
+            startActivities(arrayOf(communityHomeIntent, communityIntent))
+
             val postDetailIntent = Intent(this, PostDetailActivity::class.java)
             postDetailIntent.putExtra(EXTRA_PARAM_NEWS_FEED_ID, fakePostId)
-
-            val sBuilder = TaskStackBuilder.create(this)
-                .addNextIntent(communityHomeIntent)
-                .addNextIntent(communityIntent)
-                .addNextIntent(postDetailIntent)
-
-            val pendingIntent = sBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT)
-            val intentSender = pendingIntent?.intentSender
-            startIntentSender(intentSender, null, 0, 0, 0)
+            Timer().schedule(1500) { startActivity(postDetailIntent) }
         }
     }
 
