@@ -27,19 +27,6 @@ class MainActivity : AppCompatActivity() {
         btnLogin.setOnClickListener {
             if (etUserId.text.isNotEmpty() && etUserName.text.isNotEmpty()) {
                 signInUser(etUserId.text.toString(), etUserName.text.toString())
-                EkoClient.registerDevice("").displayName("").authToken("")
-                EkoClient.registerDevice(etUserId.text.toString(), etUserName.text.toString())
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .doOnComplete {
-                        navigateToFeatureList()
-                    }
-                    .doOnError {
-                        Toast.makeText(this,
-                            "Could not register user " + it.message,
-                            Toast.LENGTH_LONG).show()
-                    }
-                    .subscribe()
             } else {
                 Toast.makeText(this, "Enter userId and Display Name", Toast.LENGTH_SHORT).show()
             }

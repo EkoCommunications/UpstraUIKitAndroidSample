@@ -32,6 +32,9 @@
                     android:scheme="app" />
             </intent-filter>
         </activity>
+        <activity android:name=".CommunityHomePageActivity" />
+        <activity android:name=".CommunityActivity" />
+        <activity android:name=".PostDetailActivity" />
     </application>
 
 </manifest>
