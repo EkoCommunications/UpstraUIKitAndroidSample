@@ -61,8 +61,7 @@ class FeatureListActivity : AppCompatActivity() {
                 this.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                val channel =
-                    NotificationChannel(channelId, title, NotificationManager.IMPORTANCE_HIGH)
+                val channel =NotificationChannel(channelId, title, NotificationManager.IMPORTANCE_HIGH)
                 mNotificationManager.createNotificationChannel(channel)
                 builder.setChannelId(channelId)
             }
@@ -75,10 +74,10 @@ class FeatureListActivity : AppCompatActivity() {
                 val communityId = intent.getStringExtra(EXTRA_PARAM_COMMUNITY_ID) ?: ""
                 val postId = intent.getStringExtra(EXTRA_PARAM_NEWS_FEED_ID) ?: ""
                 startFlowPostDetailActivity(communityId, postId)
-            } else {
-                openPostDetailPage(it)
-                openCommunityHomePage(it)
             }
+
+            openPostDetailPage(it)
+            openCommunityHomePage(it)
         }
     }
 
