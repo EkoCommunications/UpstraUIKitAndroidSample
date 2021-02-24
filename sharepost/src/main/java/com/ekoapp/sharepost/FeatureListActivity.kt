@@ -23,8 +23,6 @@ import com.ekoapp.sharepost.MockData.notiTitle
 import com.ekoapp.sharepost.MockData.postId
 import com.ekoapp.sharepost.MockData.postIdFromCommunity
 import kotlinx.android.synthetic.main.activity_feature_list.*
-import java.util.*
-import kotlin.concurrent.schedule
 
 class FeatureListActivity : AppCompatActivity() {
 
@@ -43,7 +41,12 @@ class FeatureListActivity : AppCompatActivity() {
         tvOpenPostDetail.setOnClickListener { openDefaultPostDetailPage() }
 
         tvOpenCommunityHome.text = "$deepLinkHost?postId=$postIdFromCommunity"
-        tvOpenCommunityHome.setOnClickListener { openPostDetailFromCommunityPage(communityId, postIdFromCommunity) }
+        tvOpenCommunityHome.setOnClickListener {
+            openPostDetailFromCommunityPage(
+                communityId,
+                postIdFromCommunity
+            )
+        }
     }
 
     private fun setupEvent() {
@@ -74,16 +77,18 @@ class FeatureListActivity : AppCompatActivity() {
 
         val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
         val builder = NotificationCompat.Builder(this, notiChannelId)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle(notiTitle)
-                .setContentText("postId: $postIdFromCommunity")
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true)
+            .setSmallIcon(R.mipmap.ic_launcher)
+            .setContentTitle(notiTitle)
+            .setContentText("postId: $postIdFromCommunity")
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
 
-        val mNotificationManager = this.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val mNotificationManager =
+            this.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(notiChannelId, title, NotificationManager.IMPORTANCE_HIGH)
+            val channel =
+                NotificationChannel(notiChannelId, title, NotificationManager.IMPORTANCE_HIGH)
             mNotificationManager.createNotificationChannel(channel)
             builder.setChannelId(notiChannelId)
         }

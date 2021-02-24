@@ -7,8 +7,6 @@ import com.ekoapp.ekosdk.uikit.community.newsfeed.activity.EkoPostDetailsActivit
 import com.ekoapp.ekosdk.uikit.community.utils.EXTRA_PARAM_COMMUNITY_ID
 import com.ekoapp.ekosdk.uikit.community.utils.EXTRA_PARAM_NEWS_FEED_ID
 import com.ekoapp.sharepost.MockData.postId
-import java.util.*
-import kotlin.concurrent.schedule
 
 fun Context.openDefaultCommunityHomePage() {
     val intent = Intent(this, EkoCommunityHomePageActivity::class.java)
@@ -24,11 +22,9 @@ fun Context.openDefaultPostDetailPage() {
 fun Context.openPostDetailFromCommunityPage(communityId: String, postId: String) {
     val communityHomeIntent = Intent(this, CommunityHomePageActivity::class.java)
     val communityIntent = Intent(this, CommunityActivity::class.java)
-
     communityIntent.putExtra(EXTRA_PARAM_COMMUNITY_ID, communityId)
-    startActivities(arrayOf(communityHomeIntent, communityIntent))
-
     val postDetailIntent = Intent(this, PostDetailActivity::class.java)
     postDetailIntent.putExtra(EXTRA_PARAM_NEWS_FEED_ID, postId)
-    Timer().schedule(500) { startActivity(postDetailIntent) }
+
+    startActivities(arrayOf(communityHomeIntent, communityIntent, postDetailIntent))
 }
