@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_8dp"
-        android:text="DeepLink with open stack page"
+        android:text="DeepLink with stack open Post Detail page"
         android:textColor="@color/black"
         android:textStyle="bold" />
 

@@ -55,7 +55,7 @@ class FeatureListActivity : AppCompatActivity() {
 
             val postDetailIntent = Intent(this, PostDetailActivity::class.java)
             postDetailIntent.putExtra(EXTRA_PARAM_NEWS_FEED_ID, fakePostId)
-            Timer().schedule(1500) { startActivity(postDetailIntent) }
+            Timer().schedule(500) { startActivity(postDetailIntent) }
         }
     }
 
