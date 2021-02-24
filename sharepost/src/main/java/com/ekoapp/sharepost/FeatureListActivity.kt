@@ -72,7 +72,7 @@ class FeatureListActivity : AppCompatActivity() {
 
         val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
         val builder = NotificationCompat.Builder(this, notiChannelId)
-                .setSmallIcon(R.drawable.ic_community_public)
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(notiTitle)
                 .setContentText("postId: $postIdFromCommunity")
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
