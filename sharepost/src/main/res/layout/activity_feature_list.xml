@@ -54,4 +54,11 @@
         android:textColor="@color/upstraColorPrimary"
         android:textColorLink="@color/upstraColorPrimary" />
 
+    <Button
+        android:id="@+id/btnNotificationPostDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/amity_padding_xs"
+        android:text="Notification with Post Detail" />
+
 </LinearLayout>
