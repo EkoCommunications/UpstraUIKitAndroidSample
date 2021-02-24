@@ -11,6 +11,8 @@ import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
+import com.ekoapp.ekosdk.uikit.community.home.activity.EkoCommunityHomePageActivity
+import com.ekoapp.ekosdk.uikit.community.newsfeed.activity.EkoPostDetailsActivity
 import com.ekoapp.ekosdk.uikit.community.utils.EXTRA_PARAM_COMMUNITY_ID
 import com.ekoapp.ekosdk.uikit.community.utils.EXTRA_PARAM_NEWS_FEED_ID
 import com.ekoapp.sharepost.MockData.DEST_NOTIFICATION
@@ -23,6 +25,8 @@ import com.ekoapp.sharepost.MockData.notiTitle
 import com.ekoapp.sharepost.MockData.postId
 import com.ekoapp.sharepost.MockData.postIdFromCommunity
 import kotlinx.android.synthetic.main.activity_feature_list.*
+import java.util.*
+import kotlin.concurrent.schedule
 
 class FeatureListActivity : AppCompatActivity() {
 
@@ -38,14 +42,31 @@ class FeatureListActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     fun setupView() {
         tvOpenPostDetail.text = "$deepLinkHost?postId=${postId}"
-        tvOpenPostDetail.setOnClickListener { openDefaultPostDetailPage() }
+        tvOpenPostDetail.setOnClickListener {
+            val intent = Intent(this, EkoPostDetailsActivity::class.java)
+            intent.putExtra(EXTRA_PARAM_NEWS_FEED_ID, postId)
+            startActivity(intent)
+        }
 
         tvOpenCommunityHome.text = "$deepLinkHost?postId=$postIdFromCommunity"
-        tvOpenCommunityHome.setOnClickListener { openPostDetailFromCommunityPage(communityId, postIdFromCommunity) }
+        tvOpenCommunityHome.setOnClickListener {
+            val communityHomeIntent = Intent(this, CommunityHomePageActivity::class.java)
+            val communityIntent = Intent(this, CommunityActivity::class.java)
+
+            communityIntent.putExtra(EXTRA_PARAM_COMMUNITY_ID, communityId)
+            startActivities(arrayOf(communityHomeIntent, communityIntent))
+
+            val postDetailIntent = Intent(this, PostDetailActivity::class.java)
+            postDetailIntent.putExtra(EXTRA_PARAM_NEWS_FEED_ID, postId)
+            Timer().schedule(500) { startActivity(postDetailIntent) }
+        }
     }
 
     private fun setupEvent() {
-        btnOpenDefaultCommunity.setOnClickListener { openDefaultCommunityHomePage() }
+        btnOpenDefaultCommunity.setOnClickListener {
+            val intent = Intent(this, EkoCommunityHomePageActivity::class.java)
+            startActivity(intent)
+        }
         btnNotificationPostDetail.setOnClickListener { pushNotification() }
     }
 
@@ -56,7 +77,16 @@ class FeatureListActivity : AppCompatActivity() {
             if (!destination.isNullOrEmpty() && destination == DEST_NOTIFICATION) {
                 val communityId = intent.getStringExtra(EXTRA_PARAM_COMMUNITY_ID) ?: ""
                 val postId = intent.getStringExtra(EXTRA_PARAM_NEWS_FEED_ID) ?: ""
-                openPostDetailFromCommunityPage(communityId, postId)
+
+                val communityHomeIntent = Intent(this, CommunityHomePageActivity::class.java)
+                val communityIntent = Intent(this, CommunityActivity::class.java)
+
+                communityIntent.putExtra(EXTRA_PARAM_COMMUNITY_ID, communityId)
+                startActivities(arrayOf(communityHomeIntent, communityIntent))
+
+                val postDetailIntent = Intent(this, PostDetailActivity::class.java)
+                postDetailIntent.putExtra(EXTRA_PARAM_NEWS_FEED_ID, postId)
+                Timer().schedule(500) { startActivity(postDetailIntent) }
             }
         }
     }
@@ -72,12 +102,12 @@ class FeatureListActivity : AppCompatActivity() {
 
         val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
         val builder = NotificationCompat.Builder(this, notiChannelId)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle(notiTitle)
-                .setContentText("postId: $postIdFromCommunity")
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true)
+            .setSmallIcon(R.mipmap.ic_launcher)
+            .setContentTitle(notiTitle)
+            .setContentText("postId: $postIdFromCommunity")
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
 
         val mNotificationManager = this.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
