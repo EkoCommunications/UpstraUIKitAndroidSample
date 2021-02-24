@@ -10,8 +10,6 @@ import com.ekoapp.ekosdk.uikit.community.newsfeed.activity.EkoPostDetailsActivit
 import com.ekoapp.ekosdk.uikit.community.utils.EXTRA_PARAM_COMMUNITY_ID
 import com.ekoapp.ekosdk.uikit.community.utils.EXTRA_PARAM_NEWS_FEED_ID
 import kotlinx.android.synthetic.main.activity_feature_list.*
-import java.util.*
-import kotlin.concurrent.schedule
 
 class FeatureListActivity : AppCompatActivity() {
 
@@ -51,11 +49,9 @@ class FeatureListActivity : AppCompatActivity() {
             val communityHomeIntent = Intent(this, CommunityHomePageActivity::class.java)
             val communityIntent = Intent(this, CommunityActivity::class.java)
             communityIntent.putExtra(EXTRA_PARAM_COMMUNITY_ID, fakeCommunityId)
-            startActivities(arrayOf(communityHomeIntent, communityIntent))
-
             val postDetailIntent = Intent(this, PostDetailActivity::class.java)
             postDetailIntent.putExtra(EXTRA_PARAM_NEWS_FEED_ID, fakePostId)
-            Timer().schedule(1500) { startActivity(postDetailIntent) }
+            startActivities(arrayOf(communityHomeIntent, communityIntent, postDetailIntent))
         }
     }
 

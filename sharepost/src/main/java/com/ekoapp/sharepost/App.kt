@@ -5,10 +5,10 @@ import android.content.Context
 import android.util.Log
 import com.ekoapp.ekosdk.EkoClient
 import com.ekoapp.ekosdk.feed.EkoPost
-import com.ekoapp.ekosdk.uikit.settings.EkoUIKitClient
-import com.ekoapp.ekosdk.uikit.settings.feed.EkoPostSharingSettings
-import com.ekoapp.ekosdk.uikit.settings.feed.EkoPostSharingTarget
-import com.ekoapp.ekosdk.uikit.settings.feed.IPostShareClickListener
+import com.ekoapp.ekosdk.uikit.EkoUIKitClient
+import com.ekoapp.ekosdk.uikit.feed.settings.EkoPostSharingSettings
+import com.ekoapp.ekosdk.uikit.feed.settings.EkoPostSharingTarget
+import com.ekoapp.ekosdk.uikit.feed.settings.IPostShareClickListener
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
