@@ -3,35 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/margin_16dp"
-    android:orientation="vertical"
     android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="@dimen/margin_16dp"
     tools:context=".FeatureListActivity">
 
     <Button
-        android:id="@+id/btnOpenDefaultCommunity"
+        android:id="@+id/btnNotificationPostDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Open Default Community" />
-
-    <TextView
-        android:id="@+id/tvOpenPostDetailTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_8dp"
-        android:text="Example DeepLink"
-        android:textColor="@color/black"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/tvOpenPostDetail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_8dp"
-        android:autoLink="all"
-        android:focusable="true"
-        android:linksClickable="true"
-        android:textColor="@color/upstraColorPrimary"
-        android:textColorLink="@color/upstraColorPrimary" />
+        android:layout_marginTop="@dimen/margin_8dp"
+        android:text="Create Push with pendingIntent" />
 
 </LinearLayout>

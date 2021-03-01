@@ -14,8 +14,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        if (isLoggedInUser()) {
+        if (shouldAutoSignIn()) {
             navigateToFeatureList()
         } else {
             initView()
@@ -27,19 +26,6 @@ class MainActivity : AppCompatActivity() {
         btnLogin.setOnClickListener {
             if (etUserId.text.isNotEmpty() && etUserName.text.isNotEmpty()) {
                 signInUser(etUserId.text.toString(), etUserName.text.toString())
-                EkoClient.registerDevice("").displayName("").authToken("")
-                EkoClient.registerDevice(etUserId.text.toString(), etUserName.text.toString())
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .doOnComplete {
-                        navigateToFeatureList()
-                    }
-                    .doOnError {
-                        Toast.makeText(this,
-                            "Could not register user " + it.message,
-                            Toast.LENGTH_LONG).show()
-                    }
-                    .subscribe()
             } else {
                 Toast.makeText(this, "Enter userId and Display Name", Toast.LENGTH_SHORT).show()
             }
@@ -47,8 +33,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun signInUser(userId: String, userName: String) {
-        EkoClient.registerDevice(userId).displayName(userName).build().submit()
+    private fun signInUser(userId: String, displayName: String) {
+        EkoClient.registerDevice(userId)
+            .displayName(displayName)
+            .build()
+            .submit()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnComplete {
@@ -62,13 +51,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun navigateToFeatureList() {
-        val deepUrl = "app://upstra/postDetail"
-        val intent = Intent(Intent.ACTION_VIEW)
-        intent.data = Uri.parse(deepUrl)
+        val intent = Intent(this, FeatureListActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
-    private fun isLoggedInUser(): Boolean {
-        return EkoClient.getDisplayName().isNotEmpty()
+    private fun shouldAutoSignIn(): Boolean {
+        return !EkoClient.getUserId().isNullOrEmpty() && !EkoClient.getDisplayName().isNullOrEmpty()
     }
+
 }
