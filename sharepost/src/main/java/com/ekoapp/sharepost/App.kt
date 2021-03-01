@@ -2,6 +2,7 @@ package com.ekoapp.sharepost
 
 import android.app.Application
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import com.ekoapp.ekosdk.EkoClient
 import com.ekoapp.ekosdk.feed.EkoPost
@@ -16,25 +17,21 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         val apiKey = getString(R.string.upstra_api_key)
-        EkoClient.setup(apiKey)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnComplete {
-                Log.d("", "setup success")
-            }
-            .doOnError {
-                it.message?.let { it1 -> Log.d("", it1) }
-            }
 
-        //TODO This allow setting share external for example
+        EkoClient.setup(apiKey)
+
         val settings = EkoPostSharingSettings()
-        settings.myFeedPostSharingTarget = enumValues<EkoPostSharingTarget>().toList()
+        settings.publicCommunityPostSharingTarget = listOf(EkoPostSharingTarget.External)
         EkoUIKitClient.feedUISettings.postSharingSettings = settings
 
         EkoUIKitClient.feedUISettings.postShareClickListener = object : IPostShareClickListener {
             override fun shareToExternal(context: Context, post: EkoPost) {
+                // Create intent for link sharing
                 val fakeURL = "https://www.upstra.co/postDetail?id=" + post.getPostId()
-                context.shareLinkToExternalApp(fakeURL)
+                val shareIntent = Intent(Intent.ACTION_SEND)
+                shareIntent.type = "text/plain"
+                shareIntent.putExtra(Intent.EXTRA_TEXT, fakeURL)
+                context.startActivity(Intent.createChooser(shareIntent, "Share link using"))
             }
         }
     }

@@ -19,7 +19,9 @@
         </activity>
         <activity
             android:name=".FeatureListActivity"
-            android:launchMode="singleTask">
+            android:launchMode="singleTask"
+            android:taskAffinity=""
+            android:excludeFromRecents="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -32,9 +34,12 @@
                     android:scheme="app" />
             </intent-filter>
         </activity>
-        <activity android:name=".CommunityHomePageActivity" />
-        <activity android:name=".CommunityActivity" />
-        <activity android:name=".PostDetailActivity" />
+        <activity android:name=".pages.CommunityHomePageActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"/>
+        <activity android:name=".pages.CommunityActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"/>
+        <activity android:name=".pages.PostDetailActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"/>
     </application>
 
 </manifest>
