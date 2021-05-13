@@ -8,6 +8,6 @@
     </style>
 
     <!-- Base eko theme. Use this theme as Whole app theme or individual Activity/Component theme-->
-    <style name="EkoTheme" parent="Base.Theme.EkoApp"/>
+    <style name="AmityTheme" parent="Amity.Base.Theme.AmityApp"/>
 
 </resources>

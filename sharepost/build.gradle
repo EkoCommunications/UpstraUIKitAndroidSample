@@ -7,7 +7,7 @@ plugins {
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "com.ekoapp.sharepost"
@@ -15,7 +15,7 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -54,5 +54,5 @@ dependencies {
     implementation "com.github.bumptech.glide:okhttp3-integration:4.11.0"
 
     //ui kit dependency
-    implementation "com.github.EkoCommunications.UpstraUIKitAndroid:upstra-uikit:$uikit_version"
+    implementation "com.github.AmityCo.Amity-Social-Cloud-UIKit-Android:amity-uikit:$uikit_version"
 }

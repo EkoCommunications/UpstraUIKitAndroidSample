@@ -1,11 +1,10 @@
 package com.ekoapp.sharepost
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.ekoapp.ekosdk.EkoClient
+import com.amity.socialcloud.sdk.AmityCoreClient
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
@@ -34,7 +33,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun signInUser(userId: String, displayName: String) {
-        EkoClient.registerDevice(userId)
+        AmityCoreClient.registerDevice(userId)
             .displayName(displayName)
             .build()
             .submit()
@@ -57,7 +56,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun shouldAutoSignIn(): Boolean {
-        return !EkoClient.getUserId().isNullOrEmpty() && !EkoClient.getDisplayName().isNullOrEmpty()
+        return AmityCoreClient.getUserId().isNotEmpty()
     }
 
 }

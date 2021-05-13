@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.amity.socialcloud.sdk.AmityCoreClient
+import com.amity.socialcloud.uikit.community.explore.fragments.AmityCommunityExplorerFragment
+import com.amity.socialcloud.uikit.community.newsfeed.fragment.AmityMyFeedFragment
+import com.amity.socialcloud.uikit.community.newsfeed.fragment.AmityNewsFeedFragment
+import com.amity.socialcloud.uikit.community.profile.fragment.AmityUserProfilePageFragment
 import com.ekoapp.community.R
-import com.ekoapp.ekosdk.EkoClient
-import com.ekoapp.ekosdk.uikit.community.explore.fragments.EkoExploreFragment
-import com.ekoapp.ekosdk.uikit.community.newsfeed.fragment.EkoFeedFragment
-import com.ekoapp.ekosdk.uikit.community.newsfeed.fragment.EkoNewsFeedFragment
-import com.ekoapp.ekosdk.uikit.community.profile.fragment.EkoUserProfilePageFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_news_feed_home.*
 import java.util.*
@@ -51,19 +51,19 @@ class NewsFeedHomeActivity : AppCompatActivity() {
         }
 
     private fun getNewsFeed(): Fragment {
-        return EkoNewsFeedFragment.Builder().build(this)
+        return AmityNewsFeedFragment.newInstance().build(this)
     }
 
     private fun getProfile(): Fragment {
-        return EkoUserProfilePageFragment.Builder().userId(EkoClient.getUserId()).build(this)
+        return AmityUserProfilePageFragment.newInstance(AmityCoreClient.getUserId()).build(this)
     }
 
     private fun getExplore(): Fragment {
-        return EkoExploreFragment.Builder().build(this)
+        return AmityCommunityExplorerFragment.newInstance().build(this)
     }
 
     private fun getTimeline(): Fragment {
-        return EkoFeedFragment.Builder().mine().build(this)
+        return AmityMyFeedFragment.newInstance().build(this)
     }
 
     private fun addFragment(fragment: Fragment) {

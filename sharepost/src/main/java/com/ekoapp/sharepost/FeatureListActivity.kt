@@ -11,8 +11,8 @@ import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
-import com.ekoapp.ekosdk.uikit.community.utils.EXTRA_PARAM_COMMUNITY_ID
-import com.ekoapp.ekosdk.uikit.community.utils.EXTRA_PARAM_NEWS_FEED_ID
+import com.amity.socialcloud.uikit.community.utils.EXTRA_PARAM_COMMUNITY_ID
+import com.amity.socialcloud.uikit.community.utils.EXTRA_PARAM_NEWS_FEED_ID
 import com.ekoapp.sharepost.MockData.DESTINATION
 import com.ekoapp.sharepost.MockData.EXTRA_DESTINATION
 import com.ekoapp.sharepost.MockData.communityId

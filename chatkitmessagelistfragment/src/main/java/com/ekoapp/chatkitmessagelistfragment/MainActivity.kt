@@ -1,11 +1,11 @@
 package com.ekoapp.chatkitmessagelistfragment
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.ekoapp.ekosdk.EkoClient
-import com.ekoapp.ekosdk.uikit.chat.messages.fragment.EkoMessageListFragment
+import com.amity.socialcloud.sdk.AmityCoreClient
+import com.amity.socialcloud.uikit.chat.messages.fragment.AmityMessageListFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -16,7 +16,8 @@ class MainActivity : AppCompatActivity() {
         /**
          * Replace with actual userId[String] and displayName[String]
          */
-        EkoClient.registerDevice("testUser2").displayName("Test User2").build().submit().subscribe()
+        AmityCoreClient.registerDevice("testUser2").displayName("Test User2").build().submit()
+            .subscribe()
 
         btnLoadFragment.setOnClickListener {
             loadFragment()
@@ -29,7 +30,7 @@ class MainActivity : AppCompatActivity() {
          * Use fragment builder to create instance of EkoMessageListFragment
          * Replace channelId[String] with actual channelId
          */
-        val builder = EkoMessageListFragment.Builder("channelId")
+        val builder = AmityMessageListFragment.newInstance("channelId")
         val messageListFragment: Fragment = builder.build()
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragmentContainer, messageListFragment)

@@ -1,7 +1,7 @@
 package com.ekoapp.chatkitmessagelistfragment
 
 import android.app.Application
-import com.ekoapp.ekosdk.EkoClient
+import com.amity.socialcloud.sdk.AmityCoreClient
 
 class ChatkitMsgListFragmentApp: Application() {
 
@@ -15,6 +15,6 @@ class ChatkitMsgListFragmentApp: Application() {
         /**
          * Setup call to initialize the SDK
          */
-        EkoClient.setup(TEST_KEY)
+        AmityCoreClient.setup(TEST_KEY)
     }
 }

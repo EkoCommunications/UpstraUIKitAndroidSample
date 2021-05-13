@@ -3,8 +3,8 @@ package com.ekoapp.sharepost.pages
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.ekoapp.ekosdk.uikit.community.newsfeed.fragment.EkoPostDetailFragment
-import com.ekoapp.ekosdk.uikit.community.utils.EXTRA_PARAM_NEWS_FEED_ID
+import com.amity.socialcloud.uikit.community.newsfeed.fragment.AmityPostDetailFragment
+import com.amity.socialcloud.uikit.community.utils.EXTRA_PARAM_NEWS_FEED_ID
 import com.ekoapp.sharepost.R
 
 class PostDetailActivity : AppCompatActivity() {
@@ -17,14 +17,13 @@ class PostDetailActivity : AppCompatActivity() {
             val fragmentManager = supportFragmentManager
             val fragmentTransaction = fragmentManager.beginTransaction()
             val fragment = getPostDetailFragment(postId)
-            fragmentTransaction.replace(com.ekoapp.ekosdk.uikit.R.id.fragmentContainer, fragment)
+            fragmentTransaction.replace(R.id.fragmentContainer, fragment)
             fragmentTransaction.commit()
         }
     }
 
     private fun getPostDetailFragment(postId: String): Fragment {
-        return EkoPostDetailFragment.Builder()
-            .postId(postId)
+        return AmityPostDetailFragment.newInstance(postId)
             .build(this)
     }
 

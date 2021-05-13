@@ -1,13 +1,16 @@
 package com.ekoapp.chatkitmessagelistwithcustomui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.ekoapp.ekosdk.EkoClient
-import com.ekoapp.ekosdk.uikit.chat.home.callback.IRecentChatItemClickListener
-import com.ekoapp.ekosdk.uikit.chat.home.fragment.EkoChatHomePageFragment
+import androidx.appcompat.app.AppCompatActivity
+import com.amity.socialcloud.sdk.AmityCoreClient
+import com.amity.socialcloud.uikit.chat.home.callback.AmityRecentChatFragmentDelegate
+import com.amity.socialcloud.uikit.chat.home.callback.AmityRecentChatItemClickListener
+import com.amity.socialcloud.uikit.chat.home.fragment.AmityChatHomePageFragment
+import com.amity.socialcloud.uikit.chat.recent.fragment.AmityRecentChatFragment
 
-class MainActivity : AppCompatActivity(), IRecentChatItemClickListener {
+class MainActivity : AppCompatActivity(), AmityRecentChatFragmentDelegate,
+    AmityRecentChatItemClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,14 +18,15 @@ class MainActivity : AppCompatActivity(), IRecentChatItemClickListener {
         /**
          * Replace with actual userId[String] and displayName[String]
          */
-        EkoClient.registerDevice("testUser2").displayName("Test User2").build().submit().subscribe()
+        AmityCoreClient.registerDevice("testUser2").displayName("Test User2").build().submit()
+            .subscribe()
 
-        val chatHomeFragment = EkoChatHomePageFragment.Builder()
+        val chatHomeFragment = AmityChatHomePageFragment.newInstance()
             /**
              * Implement listener to override item click
-             * No need to implement [IRecentChatClickListener] if you don't want to override item click
+             * No need to implement [AmityRecentChatItemClickListener] if you don't want to override item click
              */
-            .recentChatItemClickListener(this)
+            .recentChatFragmentDelegate(this)
             .build(this)
 
         val transaction = supportFragmentManager.beginTransaction()
@@ -36,5 +40,11 @@ class MainActivity : AppCompatActivity(), IRecentChatItemClickListener {
             putExtra("CHANNEL_ID", channelId)
         }
         startActivity(intent)
+    }
+
+    override fun recentChatFragment(): AmityRecentChatFragment {
+        return AmityRecentChatFragment.newInstance()
+            .recentChatItemClickListener(this)
+            .build(this)
     }
 }

@@ -3,11 +3,11 @@ package com.ekoapp.community
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.amity.socialcloud.uikit.community.home.activity.AmityCommunityHomePageActivity
+import com.amity.socialcloud.uikit.community.ui.view.AmityCommunityCreatorActivity
 import com.ekoapp.community.homepage.MyCustomCommunityHomePageActivity
 import com.ekoapp.community.newsfeed.CreatePostActivity
 import com.ekoapp.community.newsfeed.NewsFeedHomeActivity
-import com.ekoapp.ekosdk.uikit.community.home.activity.EkoCommunityHomePageActivity
-import com.ekoapp.ekosdk.uikit.community.ui.view.EkoCommunityCreateActivity
 import kotlinx.android.synthetic.main.activity_feature_list.*
 
 class FeatureListActivity : AppCompatActivity() {
@@ -16,7 +16,7 @@ class FeatureListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_feature_list)
 
         btnOpenDefaultCommunity.setOnClickListener {
-            val intent = Intent(this, EkoCommunityHomePageActivity::class.java)
+            val intent = Intent(this, AmityCommunityHomePageActivity::class.java)
             startActivity(intent)
         }
 
@@ -26,7 +26,7 @@ class FeatureListActivity : AppCompatActivity() {
         }
 
         btnCreateCommunity.setOnClickListener {
-            val intent = Intent(this, EkoCommunityCreateActivity::class.java)
+            val intent = Intent(this, AmityCommunityCreatorActivity::class.java)
             startActivity(intent)
         }
 

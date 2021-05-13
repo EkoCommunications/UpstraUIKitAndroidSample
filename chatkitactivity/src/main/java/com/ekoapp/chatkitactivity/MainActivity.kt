@@ -1,10 +1,10 @@
 package com.ekoapp.chatkitactivity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.ekoapp.ekosdk.EkoClient
-import com.ekoapp.ekosdk.uikit.chat.home.EkoChatHomePageActivity
+import androidx.appcompat.app.AppCompatActivity
+import com.amity.socialcloud.sdk.AmityCoreClient
+import com.amity.socialcloud.uikit.chat.home.AmityChatHomePageActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -15,10 +15,11 @@ class MainActivity : AppCompatActivity() {
         /**
          * Replace with actual userId[String] and displayName[String]
          */
-        EkoClient.registerDevice("testUser2").displayName("Test User2").build().submit().subscribe()
+        AmityCoreClient.registerDevice("testUser2").displayName("Test User2").build().submit()
+            .subscribe()
 
         btnChatActivity.setOnClickListener {
-            val chatIntent  = Intent(this, EkoChatHomePageActivity::class.java)
+            val chatIntent = Intent(this, AmityChatHomePageActivity::class.java)
             startActivity(chatIntent)
         }
     }

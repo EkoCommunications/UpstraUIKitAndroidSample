@@ -1,7 +1,7 @@
 package com.ekoapp.chatkitmessagelistwithcustomui
 
 import android.app.Application
-import com.ekoapp.ekosdk.EkoClient
+import com.amity.socialcloud.sdk.AmityCoreClient
 
 class ChatKitCustomUiApp : Application() {
 
@@ -15,6 +15,6 @@ class ChatKitCustomUiApp : Application() {
         /**
          * Setup call to initialize the SDK
          */
-        EkoClient.setup(TEST_KEY)
+        AmityCoreClient.setup(TEST_KEY)
     }
 }

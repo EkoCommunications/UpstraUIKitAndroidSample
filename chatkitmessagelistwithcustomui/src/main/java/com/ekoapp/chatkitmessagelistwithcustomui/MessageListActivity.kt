@@ -1,29 +1,30 @@
 package com.ekoapp.chatkitmessagelistwithcustomui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.ekoapp.ekosdk.uikit.chat.messages.adapter.EkoMessageListAdapter
-import com.ekoapp.ekosdk.uikit.chat.messages.fragment.EkoMessageListFragment
-import com.ekoapp.ekosdk.uikit.chat.messages.viewHolder.EkoChatMessageBaseViewHolder
-import com.ekoapp.ekosdk.uikit.chat.util.MessageType
+import androidx.appcompat.app.AppCompatActivity
+import com.amity.socialcloud.uikit.chat.messages.adapter.AmityMessageListAdapter
+import com.amity.socialcloud.uikit.chat.messages.fragment.AmityMessageListFragment
+import com.amity.socialcloud.uikit.chat.messages.viewHolder.AmityChatMessageBaseViewHolder
+import com.amity.socialcloud.uikit.chat.util.MessageType
 
-class MessageListActivity : AppCompatActivity(), EkoMessageListAdapter.ICustomViewHolder {
+class MessageListActivity : AppCompatActivity(), AmityMessageListAdapter.CustomViewHolderListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_message_list)
 
         val channelId = intent.getStringExtra("CHANNEL_ID") ?: ""
+
         /**
          * Use Fragment builder to create instance
          * @param [channelId] String pass the channelId
          */
-        val messageListFragment = EkoMessageListFragment.Builder(channelId)
+        val messageListFragment = AmityMessageListFragment.newInstance(channelId)
             .build()
         /**
-         * Implement [EkoMessageListAdapter.ICustomViewHolder] if customization is required for messageViews
-         * set the customView listener using [EkoMessageListFragment] instance
+         * Implement [AmityMessageListAdapter.CustomViewHolderListener] if customization is required for messageViews
+         * set the customView listener using [AmityMessageListFragment] instance
          */
         messageListFragment.addCustomView(this)
 
@@ -40,10 +41,11 @@ class MessageListActivity : AppCompatActivity(), EkoMessageListAdapter.ICustomVi
         inflater: LayoutInflater,
         parent: ViewGroup,
         viewType: Int
-    ): EkoChatMessageBaseViewHolder? {
-        return when(viewType) {
+    ): AmityChatMessageBaseViewHolder? {
+        return when (viewType) {
             MessageType.MESSAGE_ID_TEXT_RECEIVER -> TextReceiverViewHolder(
-                inflater.inflate(R.layout.item_text_receiver, parent, false), MyTextMsgViewModel())
+                inflater.inflate(R.layout.item_text_receiver, parent, false), MyTextMsgViewModel()
+            )
             MessageType.MESSAGE_ID_TEXT_SENDER -> TextSenderViewHolder(
                 inflater.inflate(R.layout.item_text_sender, parent, false), MyTextMsgViewModel()
             )

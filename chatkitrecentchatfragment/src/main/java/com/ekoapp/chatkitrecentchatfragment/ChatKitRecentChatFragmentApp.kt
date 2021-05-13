@@ -1,9 +1,9 @@
 package com.ekoapp.chatkitrecentchatfragment
 
 import android.app.Application
-import com.ekoapp.ekosdk.EkoClient
+import com.amity.socialcloud.sdk.AmityCoreClient
 
-class ChatKitRecentChatFragmentApp: Application() {
+class ChatKitRecentChatFragmentApp : Application() {
 
     /**
      * Replace with actual api key [String]
@@ -15,6 +15,6 @@ class ChatKitRecentChatFragmentApp: Application() {
         /**
          * Setup call to initialize the SDK
          */
-        EkoClient.setup(TEST_KEY)
+        AmityCoreClient.setup(TEST_KEY)
     }
 }

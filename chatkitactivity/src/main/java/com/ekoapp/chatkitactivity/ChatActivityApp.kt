@@ -1,9 +1,9 @@
 package com.ekoapp.chatkitactivity
 
 import android.app.Application
-import com.ekoapp.ekosdk.EkoClient
+import com.amity.socialcloud.sdk.AmityCoreClient
 
-class ChatActivityApp: Application() {
+class ChatActivityApp : Application() {
 
     /**
      * Replace with actual api key [String]
@@ -15,6 +15,6 @@ class ChatActivityApp: Application() {
         /**
          * Setup call to initialize the SDK
          */
-        EkoClient.setup(TEST_KEY)
+        AmityCoreClient.setup(TEST_KEY)
     }
 }

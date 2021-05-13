@@ -1,14 +1,14 @@
 package com.ekoapp.chatkitrecentchatfragment
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.ekoapp.ekosdk.EkoClient
-import com.ekoapp.ekosdk.uikit.chat.home.callback.IRecentChatItemClickListener
-import com.ekoapp.ekosdk.uikit.chat.recent.fragment.EkoRecentChatFragment
+import androidx.appcompat.app.AppCompatActivity
+import com.amity.socialcloud.sdk.AmityCoreClient
+import com.amity.socialcloud.uikit.chat.home.callback.AmityRecentChatItemClickListener
+import com.amity.socialcloud.uikit.chat.recent.fragment.AmityRecentChatFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), IRecentChatItemClickListener {
+class MainActivity : AppCompatActivity(), AmityRecentChatItemClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,7 +17,8 @@ class MainActivity : AppCompatActivity(), IRecentChatItemClickListener {
         /**
          * Replace with actual userId[String] and displayName[String]
          */
-        EkoClient.registerDevice("testUser2").displayName("Test User2").build().submit().subscribe()
+        AmityCoreClient.registerDevice("testUser2").displayName("Test User2").build().submit()
+            .subscribe()
 
         btnLoadFragment.setOnClickListener {
             initializeFragment()
@@ -30,10 +31,10 @@ class MainActivity : AppCompatActivity(), IRecentChatItemClickListener {
         /**
          * use Fragment builder to create Instance
          */
-        val recentChatFragment = EkoRecentChatFragment.Builder()
+        val recentChatFragment = AmityRecentChatFragment.newInstance()
             /**
              * set the listener to override recentItem click event
-             * No Need to implement [IRecentChatClickListener] if you don't want to override click event
+             * No Need to implement [AmityRecentChatItemClickListener] if you don't want to override click event
              */
             .recentChatItemClickListener(this)
             .build(this)

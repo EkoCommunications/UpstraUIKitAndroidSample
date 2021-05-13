@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.ekoapp.chatkitmessagelistwithcustomui.MyTextMsgViewModel" />
@@ -16,19 +17,19 @@
             android:id="@+id/tvMsgReceiver"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/amity_sixteen"
+            android:textColor="@color/amityColorBase"
             android:textSize="16sp"
-            android:textColor="@color/ekoColorBase"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="@dimen/sixteen" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12sp"
-            app:layout_constraintTop_toBottomOf="@id/tvMsgReceiver"
-            app:layout_constraintStart_toStartOf="@id/tvMsgReceiver"/>
+            app:layout_constraintStart_toStartOf="@id/tvMsgReceiver"
+            app:layout_constraintTop_toBottomOf="@id/tvMsgReceiver" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

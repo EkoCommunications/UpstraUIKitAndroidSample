@@ -1,27 +1,22 @@
 package com.ekoapp.community.newsfeed
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.amity.socialcloud.uikit.common.base.AmityBaseToolbarFragmentContainerActivity
+import com.amity.socialcloud.uikit.community.newsfeed.fragment.AmityPostCreatorFragment
 import com.ekoapp.community.R
-import com.ekoapp.ekosdk.uikit.community.newsfeed.fragment.EkoPostCreateFragment
 
-class CreatePostActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create_post)
-        if (savedInstanceState == null) {
-            val fragmentManager = supportFragmentManager
-            val fragmentTransaction = fragmentManager.beginTransaction()
-            val fragment = getCommunityHomeFragment()
-            fragmentTransaction.replace(com.ekoapp.ekosdk.uikit.R.id.fragmentContainer, fragment)
-            fragmentTransaction.commit()
-        }
+class CreatePostActivity : AmityBaseToolbarFragmentContainerActivity() {
 
+    override fun initToolbar() {
+        getToolBar()?.setLeftDrawable(
+            ContextCompat.getDrawable(this, R.drawable.amity_ic_cross)
+        )
+        getToolBar()?.setLeftString(getString(R.string.amity_my_timeline))
     }
 
-    private fun getCommunityHomeFragment(): Fragment {
-        return EkoPostCreateFragment.Builder()
+    override fun getContentFragment(): Fragment {
+        return AmityPostCreatorFragment.newInstance().onMyFeed()
             .build(this)
     }
 

@@ -4,16 +4,16 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "com.ekoapp.chatkitrecentchatfragment"
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -52,5 +52,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     //ui kit dependency
-    implementation "com.github.EkoCommunications.UpstraUIKitAndroid:upstra-uikit:$uikit_version"
+    implementation "com.github.AmityCo.Amity-Social-Cloud-UIKit-Android:amity-uikit:$uikit_version"
 }

@@ -2,34 +2,34 @@ package com.ekoapp.chatkitmessagelistwithcustomui
 
 import android.view.View
 import androidx.databinding.DataBindingUtil
+import com.amity.socialcloud.sdk.chat.message.AmityMessage
+import com.amity.socialcloud.uikit.chat.messages.viewHolder.AmityChatMessageBaseViewHolder
+import com.amity.socialcloud.uikit.chat.messages.viewModel.AmityChatMessageBaseViewModel
 import com.ekoapp.chatkitmessagelistwithcustomui.databinding.ItemTextReceiverBinding
-import com.ekoapp.ekosdk.message.EkoMessage
-import com.ekoapp.ekosdk.uikit.chat.messages.viewHolder.EkoChatMessageBaseViewHolder
-import com.ekoapp.ekosdk.uikit.chat.messages.viewModel.EkoChatMessageBaseViewModel
 
 /**
  * Sample ViewHolder for custom text receiver message
  * @param [itemView] View
- * @param [itemViewModel] [EkoChatMessageBaseViewModel]
- * needs to extend [EkoChatMessageBaseViewHolder]
+ * @param [itemViewModel] [AmityChatMessageBaseViewModel]
+ * needs to extend [AmityChatMessageBaseViewHolder]
  */
 class TextReceiverViewHolder(
     itemView: View,
     private val itemViewModel: MyTextMsgViewModel
-): EkoChatMessageBaseViewHolder(itemView, itemViewModel) {
+) : AmityChatMessageBaseViewHolder(itemView, itemViewModel) {
 
-    private val binding: ItemTextReceiverBinding? =  DataBindingUtil.bind(itemView)
+    private val binding: ItemTextReceiverBinding? = DataBindingUtil.bind(itemView)
 
     init {
-        binding?.viewModel  = itemViewModel
+        binding?.viewModel = itemViewModel
     }
 
     /**
      * Overriden method to set the view
      * @param [message] EkoMessage
      */
-    override fun setMessage(message: EkoMessage) {
-        val data = message.getData() as EkoMessage.Data.TEXT
+    override fun setMessage(message: AmityMessage) {
+        val data = message.getData() as AmityMessage.Data.TEXT
         val text = data.getText()
         /**
          * Data binding can be used to set the views

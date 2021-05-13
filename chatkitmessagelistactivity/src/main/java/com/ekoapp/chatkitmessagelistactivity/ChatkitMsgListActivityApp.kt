@@ -1,9 +1,9 @@
 package com.ekoapp.chatkitmessagelistactivity
 
 import android.app.Application
-import com.ekoapp.ekosdk.EkoClient
+import com.amity.socialcloud.sdk.AmityCoreClient
 
-class ChatkitMsgListActivityApp: Application() {
+class ChatkitMsgListActivityApp : Application() {
 
     /**
      * Replace with actual api key [String]
@@ -15,6 +15,6 @@ class ChatkitMsgListActivityApp: Application() {
         /**
          * Setup call to initialize the SDK
          */
-        EkoClient.setup(TEST_KEY)
+        AmityCoreClient.setup(TEST_KEY)
     }
 }
