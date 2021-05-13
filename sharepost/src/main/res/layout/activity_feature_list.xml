@@ -6,7 +6,7 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:padding="@dimen/amity_sixteen"
-    tools:context=".FeatureListActivity">
+    tools:context="com.amity.sharepost.FeatureListActivity">
 
     <Button
         android:id="@+id/btnNotificationPostDetail"

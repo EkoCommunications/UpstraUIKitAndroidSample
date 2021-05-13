@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ekoapp.community">
+    package="com.amity.community">
 
     <application
-        android:name=".App"
+        android:name="com.amity.community.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UpstraUIKitAndroidSample">
 
-        <activity android:name=".MainActivity">
+        <activity android:name="com.amity.community.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -19,11 +19,11 @@
         </activity>
 
         <activity
-            android:name=".newsfeed.CreatePostActivity"
+            android:name="com.amity.community.newsfeed.CreatePostActivity"
             android:theme="@style/Amity.Base.Theme.AmityApp" />
-        <activity android:name=".newsfeed.NewsFeedHomeActivity" />
-        <activity android:name=".homepage.MyCustomCommunityHomePageActivity" />
-        <activity android:name=".FeatureListActivity" />
+        <activity android:name="com.amity.community.newsfeed.NewsFeedHomeActivity" />
+        <activity android:name="com.amity.community.homepage.MyCustomCommunityHomePageActivity" />
+        <activity android:name="com.amity.community.FeatureListActivity" />
     </application>
 
 </manifest>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="@dimen/amity_sixteen"
     android:orientation="vertical"
-    tools:context=".FeatureListActivity">
+    tools:context="com.amity.community.FeatureListActivity">
 
     <Button
         android:id="@+id/btnOpenDefaultCommunity"

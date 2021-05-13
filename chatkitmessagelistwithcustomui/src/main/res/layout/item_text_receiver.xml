@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.ekoapp.chatkitmessagelistwithcustomui.MyTextMsgViewModel" />
+            type="com.amity.chatkitmessagelistwithcustomui.MyTextMsgViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
