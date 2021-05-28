@@ -10,9 +10,8 @@
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:theme="@style/Base.Theme.EkoApp"
-        android:layout_weight="1">
-    </FrameLayout>
+        android:layout_weight="1"
+        android:theme="@style/Amity.Base.Theme.AmityApp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation"

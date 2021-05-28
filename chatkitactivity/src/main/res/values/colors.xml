@@ -5,12 +5,12 @@
     <color name="colorAccent">#03DAC5</color>
 
     <!--Customized below colors to change theme colors-->
-    <color name="ekoColorPrimary">#1054DE</color>
-    <color name="ekoColorSecondary">#292B32</color>
-    <color name="ekoColorAlert">#FA4D30</color>
-    <color name="ekoColorHighlight">#1054DE</color>
-    <color name="ekoColorBase">#292B32</color>
-    <color name="ekoColorBaseInverse">#FFFFFF</color>
-    <color name="messageBubble">#1054DE</color>
-    <color name="ekoMessageBubbleInverse">#EBECEF</color>
+    <color name="amityColorPrimary">#1054DE</color>
+    <color name="amityColorSecondary">#292B32</color>
+    <color name="amityColorAlert">#FA4D30</color>
+    <color name="amityColorHighlight">#1054DE</color>
+    <color name="amityColorBase">#292B32</color>
+    <color name="amityColorBaseInverse">#FFFFFF</color>
+    <color name="amityMessageBubble">#1054DE</color>
+    <color name="amityMessageBubbleInverse">#EBECEF</color>
 </resources>

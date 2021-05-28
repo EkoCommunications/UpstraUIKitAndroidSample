@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.ekoapp.chatkitmessagelistwithcustomui.MyTextMsgViewModel" />
+            type="com.amity.chatkitmessagelistwithcustomui.MyTextMsgViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,9 +18,9 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="@dimen/sixteen"
+            android:layout_marginEnd="@dimen/amity_sixteen"
             android:textSize="16sp"
-            android:textColor="@color/ekoColorBase" />
+            android:textColor="@color/amityColorBase" />
 
         <TextView
             android:id="@+id/tvTime"
